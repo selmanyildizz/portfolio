@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio — Selman Yıldız
 
-## Getting Started
+Bilingual (TR/EN) personal portfolio for a full-stack developer.
 
-First, run the development server:
+**Live:** [selmanyildiz.vercel.app](https://selmanyildiz.vercel.app)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Stack
+
+- **Next.js 16** (App Router) + **TypeScript**
+- **Tailwind CSS v4**
+- **react-three-fiber** / **drei** — animated 3D hero
+- **Brevo API** — contact form delivery
+
+## Features
+
+- Full TR/EN translation with a persisted language toggle
+- Interactive 3D hero that tracks the pointer
+- Contact form with a server-side API route, animated send state, and a branded HTML email
+- Testimonials as a snap-scroll row on desktop, stacked deck slider on mobile
+- Reveal-on-scroll animations that honour `prefers-reduced-motion`
+
+## Project structure
+
+```
+src/
+├─ app/
+│  ├─ api/contact/route.ts   # Brevo mail delivery
+│  ├─ layout.tsx
+│  ├─ page.tsx               # section order
+│  └─ globals.css            # theme tokens + keyframes
+├─ components/
+│  ├─ LanguageProvider.tsx   # TR/EN context
+│  ├─ Hero3D.tsx
+│  ├─ ContactDialog.tsx
+│  └─ sections/              # one file per page section
+└─ lib/
+   └─ content.ts             # ALL copy, both languages
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+All text lives in `src/lib/content.ts` — edit that file to change any copy.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Local development
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+cp .env.example .env.local   # then fill in your Brevo credentials
+npm run dev
+```
 
-## Learn More
+| Variable | Purpose |
+| --- | --- |
+| `BREVO_API_KEY` | Brevo API key used to send contact-form mail |
+| `BREVO_SENDER_EMAIL` | A sender address verified in your Brevo account |
 
-To learn more about Next.js, take a look at the following resources:
+Without these the site still runs; only the contact form returns an error.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deployed on Vercel and connected to this repository — pushes to `main` deploy automatically.
