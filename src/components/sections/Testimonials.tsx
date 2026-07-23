@@ -74,6 +74,9 @@ export default function Testimonials() {
   const { t } = useLanguage();
   const items = t.testimonials.items;
 
+  // Nothing to show until real testimonials are added to content.ts.
+  const hasItems = items.length > 0;
+
   // Desktop: scroll-snap row state
   const trackRef = useRef<HTMLDivElement>(null);
   const [canPrev, setCanPrev] = useState(false);
@@ -123,6 +126,9 @@ export default function Testimonials() {
       pointerEvents: offset === 0 ? "auto" : "none",
     };
   };
+
+  // Placed after every hook so hook order stays stable.
+  if (!hasItems) return null;
 
   return (
     <section id="testimonials" className="scroll-mt-28 overflow-hidden py-24">

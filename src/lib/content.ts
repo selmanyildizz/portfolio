@@ -229,38 +229,9 @@ export const content = {
     },
     testimonials: {
       heading: "What people say",
-      items: [
-        {
-          name: "Ahmet K.",
-          role: "Business Owner",
-          text: "The queue system transformed how we run the Eid season. Customers stopped crowding the desk — they just follow their link. Setup took a single afternoon.",
-          rating: 5,
-        },
-        {
-          name: "Elif S.",
-          role: "Product Manager",
-          text: "Selman translates vague business requirements into working software faster than anyone I've worked with. Clear communication throughout.",
-          rating: 5,
-        },
-        {
-          name: "Mehmet D.",
-          role: "Backend Developer",
-          text: "Clean code, solid architecture decisions, and he actually documents things. Reviewing his PRs was a pleasure.",
-          rating: 5,
-        },
-        {
-          name: "Zeynep A.",
-          role: "UI/UX Designer",
-          text: "He cares about the pixel details most developers ignore. Handoff from Figma was smooth — what shipped matched the design.",
-          rating: 4,
-        },
-        {
-          name: "Burak T.",
-          role: "Startup Founder",
-          text: "Delivered our dashboard ahead of schedule and stayed responsive after launch for fixes and small tweaks.",
-          rating: 5,
-        },
-      ],
+      // Add real testimonials here — the section stays hidden while this is empty.
+      // Shape: { name, role, text, rating (1-5) }
+      items: [] as { name: string; role: string; text: string; rating: number }[],
     },
     footer: "Designed & built with Next.js",
   },
@@ -492,38 +463,9 @@ export const content = {
     },
     testimonials: {
       heading: "Ne dediler",
-      items: [
-        {
-          name: "Ahmet K.",
-          role: "İşletme Sahibi",
-          text: "Sıra sistemi bayram sezonunu yönetme şeklimizi değiştirdi. Müşteriler bankonun önünde beklemeyi bıraktı — linklerini takip ediyorlar. Kurulum yarım gün sürdü.",
-          rating: 5,
-        },
-        {
-          name: "Elif S.",
-          role: "Ürün Yöneticisi",
-          text: "Selman, belirsiz iş gereksinimlerini çalışan yazılıma birlikte çalıştığım herkesten hızlı dönüştürüyor. Süreç boyunca iletişimi çok netti.",
-          rating: 5,
-        },
-        {
-          name: "Mehmet D.",
-          role: "Backend Geliştirici",
-          text: "Temiz kod, sağlam mimari kararlar ve gerçekten dokümantasyon yazıyor. PR'larını incelemek keyifti.",
-          rating: 5,
-        },
-        {
-          name: "Zeynep A.",
-          role: "UI/UX Tasarımcı",
-          text: "Çoğu geliştiricinin es geçtiği piksel detaylarını önemsiyor. Figma'dan teslim çok akıcıydı — yayına çıkan, tasarımla birebir aynıydı.",
-          rating: 4,
-        },
-        {
-          name: "Burak T.",
-          role: "Startup Kurucusu",
-          text: "Panelimizi planlanandan önce teslim etti; yayına aldıktan sonra da düzeltmeler ve küçük geliştirmeler için hep ulaşılabilirdi.",
-          rating: 5,
-        },
-      ],
+      // Add real testimonials here — the section stays hidden while this is empty.
+      // Shape: { name, role, text, rating (1-5) }
+      items: [] as { name: string; role: string; text: string; rating: number }[],
     },
     footer: "Next.js ile tasarlandı ve geliştirildi",
   },
