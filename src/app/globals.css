@@ -1,26 +1,186 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #f7f6f1;
+  --ink: #101010;
+  --lime: #c8f542;
+  --lime-soft: #e6fb9b;
+  --lilac: #cdb4f6;
+  --peach: #ffd6c9;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-lime: var(--lime);
+  --color-lime-soft: var(--lime-soft);
+  --color-lilac: var(--lilac);
+  --color-peach: var(--peach);
+  --font-display: var(--font-space-grotesk);
+  --font-body: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), system-ui, sans-serif;
+}
+
+/* Outlined display text (hero backdrop) */
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(16, 16, 16, 0.25);
+}
+
+.text-outline-lime {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(200, 245, 66, 0.5);
+}
+
+/* Marquee ribbon */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+/* Subtle grain so flat surfaces don't feel sterile */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.04'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Send-to-user envelope animation (contact dialog) */
+@keyframes envelope-fly {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+    scale: 0.6;
+  }
+  12% {
+    opacity: 1;
+    scale: 1;
+  }
+  82% {
+    opacity: 1;
+    scale: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+    scale: 0.4;
+  }
+}
+
+.envelope-fly {
+  offset-path: path("M16 84 Q150 -6 284 84");
+  offset-rotate: 0deg;
+  animation: envelope-fly 1.4s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+}
+
+@keyframes path-draw {
+  from {
+    stroke-dashoffset: 340;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.path-draw {
+  stroke-dasharray: 340;
+  animation: path-draw 1.2s ease-out forwards;
+}
+
+@keyframes recipient-pop {
+  0%,
+  70% {
+    transform: scale(1);
+  }
+  82% {
+    transform: scale(1.28);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.recipient-pop {
+  animation: recipient-pop 1.5s ease-out forwards;
+}
+
+@keyframes check-in {
+  0%,
+  75% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.check-in {
+  animation: check-in 1.5s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .envelope-fly,
+  .path-draw,
+  .recipient-pop,
+  .check-in {
+    animation: none;
+  }
+}
+
+/* Hide scrollbar on the testimonial slider */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Reveal-on-scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-marquee {
+    animation: none;
+  }
 }
