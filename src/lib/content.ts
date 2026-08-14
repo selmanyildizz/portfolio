@@ -361,7 +361,7 @@ export const content = {
           description:
             "Kurban Bayramı döneminde kesim hizmeti veren işletmeler için sıra yönetimini dijitalleştiren uçtan uca web uygulaması. Kayıttan check-in'e, istasyon atamasından tamamlanmaya kadar tüm akışı gerçek zamanlı yönetir; müşteriler kişisel bağlantılarıyla sıralarını canlı takip eder. Her işlem için kullanıcı bazlı denetim kaydı ve Brevo API ile e-posta bildirimleri.",
           tags: ["Java", "Spring Boot", "Spring Security (JWT)", "PostgreSQL", "Flyway", "React", "Vite", "Railway", "Netlify"],
-          link: "https://bejewelled-sherbet-338e5b.netlify.app/",
+          link: "https://kurbanmanagement.netlify.app/",
           github: "https://github.com/selmanyildizz/kurbanManagementDemo",
           featured: true,
         },
